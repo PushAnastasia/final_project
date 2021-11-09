@@ -12,16 +12,16 @@ public class ProductPageTests extends BaseTest {
 
     @Test()
     public void navigateToProductViaCategoryAndPutToCart() {
-        selectCategoryByTitle("Кошельки и портмоне женские");
-        selectProductByIndex(0);
+        selectCategoryByTitle("Браслеты мужские");
+        selectProductByIndex(1);
         putProductInCart();
         verifyHeaderCartCount("1");
     }
 
     @Test
     public void increaseProductCountInSideMenuCart() {
-        selectCategoryByTitle("Ремни");
-        selectProductByIndex(0);
+        selectCategoryByTitle("Браслеты мужские");
+        selectProductByIndex(1);
         putProductInCart();
         openSideMenuCart();
         increaseProductCountInSideMenu();
