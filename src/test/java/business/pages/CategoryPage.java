@@ -1,6 +1,7 @@
 package business.pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
@@ -12,7 +13,8 @@ public class CategoryPage {
 
     public static void selectProductByIndex(int index) {
         $$(productItems).get(index).click();
+        Configuration.timeout = 15000;
         //SelenideElement selenideElement = $(".fm-product-slide-box").waitUntil(Condition.visible, 15000);
-        $(By.cssSelector(".fm-product-slide-box")).shouldBe(Condition.visible);
+        $(By.id("product-product")).shouldBe(Condition.visible);
     }
 }
