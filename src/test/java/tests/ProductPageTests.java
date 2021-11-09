@@ -112,12 +112,11 @@ public class ProductPageTests extends BaseTest {
     }
 
     @Test
-    public void changeProductAmountAndPutIntoCart() throws InterruptedException {
+    public void changeProductAmountAndPutIntoCart() {
         selectCategoryByTitle("Кошельки и портмоне женские");
         selectProductByIndex(0);
         changeProductAmountManually("3");
         putProductInCart();
         verifyHeaderCartCount("3");
-        Thread.sleep(10000);
     }
 }

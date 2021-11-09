@@ -2,6 +2,7 @@ package business.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -34,6 +35,7 @@ public class HeaderMenu {
     static By headerWishListButton = By.cssSelector("body > div.menu-row.sticky-top > div > div > div.col-lg-9.fm-menu-buttons-list-col.d-flex.justify-content-between > div.fm-menu-buttons-list.d-flex > button.fm-menu-buttons-item.fm-menu-buttons-wishlist");
     static By logoButton = By.id("logo");
 
+    @Step("Enter credentials into login modal and submit.")
     public static void logIn(String email, String password) {
         Configuration.timeout = 10000;
         $(profileButton).click();
@@ -42,12 +44,13 @@ public class HeaderMenu {
         $(passwordField).sendKeys(password);
         $(loginButton).click();
     }
-
+    @Step("Validate that toast message contains required message.")
     public static void validateAlertToast(String message) {
         $(alertToast).should(Condition.appear);
         $(alertToastText).should(Condition.ownText(message));
     }
 
+    @Step("Validate that profile menu is available and contains required items.")
     public static void validateProfileMenu() {
         $(profileButton).should(Condition.visible);
         $(profileButton).click();
