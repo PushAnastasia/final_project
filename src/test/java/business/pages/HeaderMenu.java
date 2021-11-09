@@ -58,6 +58,7 @@ public class HeaderMenu {
         $$(By.className("dropdown-item")).shouldHave(size(5));
     }
 
+    @Step("Open profile menu, click logout button and verify that on Logout page.")
     public static void logOut() {
         $(profileButton).click();
         $(profileMenu).should(Condition.visible);
@@ -65,15 +66,18 @@ public class HeaderMenu {
         $("title").shouldHave(attribute("text", "Выход"));
     }
 
+    @Step("Verify that cart count in header menu equals required value.")
     public static void verifyHeaderCartCount(String count) {
         $(headerCartCount).shouldHave(Condition.ownText(count));
     }
 
+    @Step("Open side bar menu cart.")
     public static void openSideMenuCart() {
         $(cartButton).click();
         $(sideMenuCart).should(Condition.visible);
     }
 
+    @Step("Close side bar menu cart.")
     public static void closeSideMenuCart() {
         $(sideMenuCloseButton).click();
         $(sideMenuCart).should(Condition.not(Condition.visible));
@@ -90,14 +94,17 @@ public class HeaderMenu {
         }
     }
 
+    @Step("Increase the amount of products in side bar menu cart by one.")
     public static void increaseProductCountInSideMenu() {
         changeProductCount(true);
     }
 
+    @Step("Decrease the amount of products in side bar menu cart by one.")
     public static void decreaseProductCountInSideMenu() {
         changeProductCount(false);
     }
 
+    @Step("Enter the required amount in the product count in side menu cart.")
     public static void changeProductCountManuallyInSideMenu(String newCount) {
         $(sideMenuCartCount).clear();
         $(sideMenuCartCount).sendKeys(newCount);
@@ -105,24 +112,29 @@ public class HeaderMenu {
         $(sideMenuCartCount).shouldHave(Condition.value(newCount));
     }
 
+    @Step("Remove product from side menu cart")
     public static void removeProductFromSideMenu() {
         $(sideMenuRemoveButton).click();
         $(sideMenuEmptyImage).should(Condition.visible);
     }
 
+    @Step("Click Create order button in side menu cart")
     public static void goToCreateOrderFromSideMenuCart() {
         $(sideMenuCreateOrderButton).click();
         $("title").shouldHave(attribute("text", "Оформление заказа"));
     }
 
+    @Step("Verify that wish list count in header menu equals required value.")
     public static void verifyHeaderWishListCount(String count) {
         $(headerWishListCount).shouldHave(Condition.ownText(count));
     }
 
+    @Step("Navigate to Wish list page.")
     public static void openWishListPage() {
         $(headerWishListButton).click();
     }
 
+    @Step("Go to Main page via Logo button.")
     public static void goToMainPageViaLogo() {
         $(logoButton).click();
         $("title").shouldHave(attribute("text", "Кожаные аксессуары Baellerry - официальный магазин в Украине"));

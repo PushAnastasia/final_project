@@ -1,6 +1,7 @@
 package business.pages;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -16,6 +17,7 @@ public class ProductPage {
     static By decreaseAmountButton = By.xpath("//*[@id=\"product\"]/div[2]/div[1]/div[1]/div/button[1]");
     static By amountField = By.id("input-quantity");
 
+    @Step("Put product into cart using Buy button on Product page")
     public static void putProductInCart() {
         $(buyButton).click();
         $(cartModal).should(Condition.visible);
@@ -23,6 +25,7 @@ public class ProductPage {
         $(cartModal).should(Condition.not(Condition.visible));
     }
 
+    @Step("Put product into Wish List using Wish List button on Product page")
     public static void putToWishList() {
         $(wishListButton).click();
         $(wishListButton).click();
@@ -42,14 +45,17 @@ public class ProductPage {
         }
     }
 
+    @Step("Increase the amount of products in Cart Modal by one.")
     public static void increaseProductAmount() {
         changeProductAmount(true);
     }
 
+    @Step("Decrease the amount of products in Cart Modal by one.")
     public static void decreaseProductAmount() {
         changeProductAmount(false);
     }
 
+    @Step("Enter amount of products in Product Count field of Cart Modal.")
     public static void changeProductAmountManually(String amount) {
         $(amountField).clear();
         $(amountField).sendKeys(amount);
