@@ -12,7 +12,7 @@ public class ProductPageTests extends BaseTest {
 
     @Test()
     public void navigateToProductViaCategoryAndPutToCart() {
-        selectCategoryByTitle("Браслеты мужские");
+        selectCategoryByTitle("Сумки женские");
         selectProductByIndex(1);
         putProductInCart();
         verifyHeaderCartCount("1");
@@ -20,8 +20,8 @@ public class ProductPageTests extends BaseTest {
 
     @Test
     public void increaseProductCountInSideMenuCart() {
-        selectCategoryByTitle("Браслеты мужские");
-        selectProductByIndex(1);
+        selectCategoryByTitle("Ремни");
+        selectProductByIndex(2);
         putProductInCart();
         openSideMenuCart();
         increaseProductCountInSideMenu();
