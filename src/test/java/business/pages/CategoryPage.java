@@ -10,7 +10,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class CategoryPage {
-    static By productItems = By.className("fm-module-item");
+    //static By productItems = By.className("fm-module-item");
+    static By productItems = By.className("fm-module-img");
     //fm-module-img
 
     @Step("Select product from the category page by index")
