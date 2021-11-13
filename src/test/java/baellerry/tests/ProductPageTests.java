@@ -1,12 +1,12 @@
-package tests;
+package baellerry.tests;
 
 import org.junit.jupiter.api.Test;
 
-import static business.pages.CategoryPage.selectProductByIndex;
-import static business.pages.HeaderMenu.*;
-import static business.pages.MainPage.selectCategoryByTitle;
-import static business.pages.ProductPage.*;
-import static business.pages.WishListPage.*;
+import static baellerry.common.pages.CategoryPage.selectProductByIndex;
+import static baellerry.common.pages.HeaderMenu.*;
+import static baellerry.common.pages.MainPage.selectCategoryByTitle;
+import static baellerry.common.pages.ProductPage.*;
+import static baellerry.common.pages.WishListPage.*;
 
 public class ProductPageTests extends BaseTest {
 

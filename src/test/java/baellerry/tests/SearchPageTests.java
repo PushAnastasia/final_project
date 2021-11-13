@@ -1,11 +1,11 @@
-package tests;
+package baellerry.tests;
 
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Test;
 
-import static business.pages.CartModal.closeCartModal;
-import static business.pages.HeaderMenu.*;
-import static business.pages.SearchPage.*;
+import static baellerry.common.pages.CartModal.closeCartModal;
+import static baellerry.common.pages.HeaderMenu.*;
+import static baellerry.common.pages.SearchPage.*;
 
 public class SearchPageTests extends BaseTest {
 

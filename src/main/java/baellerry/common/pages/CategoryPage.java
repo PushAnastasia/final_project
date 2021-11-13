@@ -1,4 +1,4 @@
-package business.pages;
+package baellerry.common.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
