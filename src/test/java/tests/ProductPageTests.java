@@ -10,7 +10,7 @@ import static business.pages.WishListPage.*;
 
 public class ProductPageTests extends BaseTest {
 
-    @Test()
+    @Test
     public void navigateToProductViaCategoryAndPutToCart() {
         selectCategoryByTitle("Сумки женские");
         selectProductByIndex(1);

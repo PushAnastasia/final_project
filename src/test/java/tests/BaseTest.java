@@ -12,7 +12,6 @@ import static com.codeborne.selenide.Selenide.*;
 public class BaseTest {
 
     @BeforeAll
-
     public static void suiteSetUp() {
         Configuration.startMaximized = true;
         Configuration.timeout = 15000;
@@ -23,7 +22,6 @@ public class BaseTest {
         DriverProvider driverProvider = new DriverProvider();
         Configuration.browser = driverProvider.getDriver();
         open("https://baellerry.ua/");
-
     }
 
     @AfterEach

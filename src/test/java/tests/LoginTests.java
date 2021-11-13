@@ -8,10 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import static business.pages.HeaderMenu.*;
 
-@Feature("Login and Logout functionality")
 public class LoginTests extends BaseTest {
 
-    @Story("Login-001")
     @Description("User should be able to login with valid credentials. Profile menu should be available for logged in user")
     @Test
     public void logInWithValidCredentials() {
@@ -21,7 +19,6 @@ public class LoginTests extends BaseTest {
         validateProfileMenu();
     }
 
-    @Story("Login-002")
     @Description("Validation message should be displayed after attempt to log in with invalid credentials")
     @Test
     public void logInWithInvalidCredentials() {
@@ -30,7 +27,6 @@ public class LoginTests extends BaseTest {
         validateAlertToast(validationMessage);
     }
 
-    @Story("Login-003")
     @Description("Logged in User should be able to log out.")
     @Test
     public void validateLogOut() {

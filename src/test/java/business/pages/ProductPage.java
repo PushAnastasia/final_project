@@ -8,8 +8,6 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ProductPage {
     static By buyButton = By.id("button-cart");
-    static By cartModal = By.id("fm-cart-modal");
-    static By closeCartButton = By.cssSelector("#fm-popup-cart > div > div > div.modal-header > button");
     static By wishListButton = By.linkText("В закладки");
     static By alertToast = By.className("alert-block");
     static By alertToastText = By.className("fm-alert-text");
@@ -20,9 +18,7 @@ public class ProductPage {
     @Step("Put product into cart using Buy button on Product page")
     public static void putProductInCart() {
         $(buyButton).click();
-        $(cartModal).should(Condition.visible);
-        $(closeCartButton).click();
-        $(cartModal).should(Condition.not(Condition.visible));
+        CartModal.closeCartModal();
     }
 
     @Step("Put product into Wish List using Wish List button on Product page")

@@ -3,6 +3,7 @@ package business.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Step;
+import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -34,6 +35,8 @@ public class HeaderMenu {
     static By headerWishListCount = By.cssSelector("body > div.menu-row.sticky-top > div > div > div.col-lg-9.fm-menu-buttons-list-col.d-flex.justify-content-between > div.fm-menu-buttons-list.d-flex > button.fm-menu-buttons-item.fm-menu-buttons-wishlist > span > span");
     static By headerWishListButton = By.cssSelector("body > div.menu-row.sticky-top > div > div > div.col-lg-9.fm-menu-buttons-list-col.d-flex.justify-content-between > div.fm-menu-buttons-list.d-flex > button.fm-menu-buttons-item.fm-menu-buttons-wishlist");
     static By logoButton = By.id("logo");
+    static By searchField = By.id("input_search");
+    static By searchButton = By.id("fm-search-button");
 
     @Step("Enter credentials into login modal and submit.")
     public static void logIn(String email, String password) {
@@ -138,5 +141,12 @@ public class HeaderMenu {
     public static void goToMainPageViaLogo() {
         $(logoButton).click();
         $("title").shouldHave(attribute("text", "Кожаные аксессуары Baellerry - официальный магазин в Украине"));
+    }
+
+    @Step("Search for some product")
+    public static void searchForProduct(String searchInput) {
+        $(searchField).clear();
+        $(searchField).sendKeys(searchInput);
+        $(searchButton).click();
     }
 }
