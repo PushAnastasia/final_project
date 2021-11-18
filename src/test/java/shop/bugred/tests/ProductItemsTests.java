@@ -3,6 +3,7 @@ package shop.bugred.tests;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junitpioneer.jupiter.RetryingTest;
 import shop.bugred.utils.models.*;
 
 import static org.hamcrest.Matchers.*;
@@ -12,8 +13,8 @@ import static shop.bugred.utils.client.Specification.responseSpecification;
 
 public class ProductItemsTests {
 
+    @RetryingTest(maxAttempts = 3, minSuccess = 1)
     @Description("Perform get item request using random id and verify that required fields not empty")
-    @Test
     public void getRandomItemByIdAndVerifyRequiredFieldsNotEmpty() {
         IdRequest request =  new IdRequest(getRandomId());
         prepareRequest().when().body(request).get("get/")

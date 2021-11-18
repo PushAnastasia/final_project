@@ -39,6 +39,6 @@ public class ProductItemSteps {
 
     public static int getRandomId() {
         Random random = new Random();
-        return random.ints(0, 2000).findFirst().getAsInt();
+        return random.ints(1, 80).findFirst().getAsInt();
     }
 }

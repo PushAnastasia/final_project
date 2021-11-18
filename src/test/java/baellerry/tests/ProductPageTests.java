@@ -1,6 +1,7 @@
 package baellerry.tests;
 
 import org.junit.jupiter.api.Test;
+import org.junitpioneer.jupiter.RetryingTest;
 
 import static baellerry.common.pages.CategoryPage.selectProductByIndex;
 import static baellerry.common.pages.HeaderMenu.*;
@@ -80,7 +81,7 @@ public class ProductPageTests extends BaseTest {
         verifyHeaderWishListCount("1");
     }
 
-    @Test()
+    @RetryingTest(maxAttempts = 3, minSuccess = 1)
     public void navigateToWishListPage() {
         selectCategoryByTitle("Ремни");
         selectProductByIndex(2);

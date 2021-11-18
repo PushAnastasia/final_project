@@ -1,15 +1,24 @@
 package baellerry.tests;
 
+import baellerry.utils.extensions.LoggingPostProcessExtension;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import baellerry.utils.DriverProvider;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.Selenide.*;
 
+@ExtendWith(LoggingPostProcessExtension.class)
 public class BaseTest {
+    private Logger logger;
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
 
     @BeforeAll
     public static void suiteSetUp() {
