@@ -22,8 +22,9 @@ public class BaseTest {
 
     @BeforeAll
     public static void suiteSetUp() {
+        int defaultTimeout = 15000;
         Configuration.startMaximized = true;
-        Configuration.timeout = 15000;
+        Configuration.timeout = defaultTimeout;
     }
 
     @BeforeEach
@@ -39,22 +40,4 @@ public class BaseTest {
         clearBrowserLocalStorage();
         Selenide.closeWindow();
     }
-
-//    @DataProvider(name = "setInvalidLoginPassword")
-//    public Object[][] setInvalidLoginPassword() {
-//        return new Object[][]{
-//                {"test", "test"},
-//                {"test", ""},
-//                {"", "test"},
-//                {"", ""}
-//        };
-//    }
-//
-//    @DataProvider(name = "setCategoryAndProduct")
-//    public Object[][] setCategoryAndProduct() {
-//        return new Object[][]{
-//                {"Кошельки и портмоне женские", 2},
-//                {"Кошельки и портмоне мужские", 0},
-//        };
-//    }
 }

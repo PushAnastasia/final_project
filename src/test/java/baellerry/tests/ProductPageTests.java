@@ -1,123 +1,129 @@
 package baellerry.tests;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.RetryingTest;
 
-import static baellerry.common.pages.CategoryPage.selectProductByIndex;
+import static baellerry.common.pages.Categories.*;
 import static baellerry.common.pages.HeaderMenu.*;
 import static baellerry.common.pages.MainPage.selectCategoryByTitle;
 import static baellerry.common.pages.ProductPage.*;
 import static baellerry.common.pages.WishListPage.*;
+import static baellerry.common.steps.NavigationSteps.selectProductByIndex;
+import static baellerry.common.steps.NavigationSteps.selectRandomProductOnCategoryPage;
 
 public class ProductPageTests extends BaseTest {
 
     @Test
+    @Description("Navigate to Product Page from Category Page and put it into cart")
     public void navigateToProductViaCategoryAndPutToCart() {
-        selectCategoryByTitle("Сумки женские");
-        selectProductByIndex(1);
+        String productCount = "1";
+        selectRandomProductOnCategoryPage(WOMEN_BAGS.getCategory());
         putProductInCart();
-        verifyHeaderCartCount("1");
+        verifyHeaderCartCount(productCount);
     }
 
     @Test
+    @Description("Put product into cart open side menu cart and increase product count")
     public void increaseProductCountInSideMenuCart() {
-        selectCategoryByTitle("Ремни");
-        selectProductByIndex(2);
+        String productCount = "2";
+        selectRandomProductOnCategoryPage(BELT.getCategory());
         putProductInCart();
         openSideMenuCart();
         increaseProductCountInSideMenu();
         closeSideMenuCart();
-        verifyHeaderCartCount("2");
+        verifyHeaderCartCount(productCount);
     }
 
     @Test
+    @Description("Put product into cart open side menu cart and decrease product count")
     public void decreaseProductCountInSideMenuCart() {
-        selectCategoryByTitle("Сумки женские");
-        selectProductByIndex(3);
+        String productCount = "1";
+        int productIndex = 0;
+        selectCategoryByTitle(MEN_WALLETS.getCategory());
+        selectProductByIndex(productIndex);
         putProductInCart();
         openSideMenuCart();
         increaseProductCountInSideMenu();
         decreaseProductCountInSideMenu();
         closeSideMenuCart();
-        verifyHeaderCartCount("1");
+        verifyHeaderCartCount(productCount);
     }
 
     @Test
+    @Description("Put product into cart open side menu cart and change product count using amount field")
     public void changeProductCountManuallyInSideMenuCart() {
-        selectCategoryByTitle("Кошельки и портмоне женские");
-        selectProductByIndex(0);
+        String productCount = "3";
+        int productIndex = 0;
+        selectCategoryByTitle(WOMEN_PURSES.getCategory());
+        selectProductByIndex(productIndex);
         putProductInCart();
         openSideMenuCart();
-        changeProductCountManuallyInSideMenu("3");
+        changeProductCountManuallyInSideMenu(productCount);
         closeSideMenuCart();
-        verifyHeaderCartCount("3");
+        verifyHeaderCartCount(productCount);
     }
 
     @Test
+    @Description("Put product into cart open side menu cart and remove product from the cart")
     public void removeProductFromSideMenuCart() {
-        selectCategoryByTitle("Сумки мужские");
-        selectProductByIndex(2);
+        String productCount = "0";
+        selectRandomProductOnCategoryPage(MEN_BAGS.getCategory());
         putProductInCart();
         openSideMenuCart();
         removeProductFromSideMenu();
         closeSideMenuCart();
-        verifyHeaderCartCount("0");
+        verifyHeaderCartCount(productCount);
     }
 
     @Test
+    @Description("Put product into cart and go to Order Page")
     public void putProductIntoCartAndGoToOrderPage() {
-        selectCategoryByTitle("Кошельки и портмоне мужские");
-        selectProductByIndex(4);
+        selectRandomProductOnCategoryPage(MEN_WALLETS.getCategory());
         putProductInCart();
         openSideMenuCart();
         goToCreateOrderFromSideMenuCart();
     }
 
     @Test()
+    @Description("Put product to Wish List and verify Wish List count in header")
     public void putProductToWishList() {
-        selectCategoryByTitle("Браслеты мужские");
-        selectProductByIndex(1);
+        String productCount ="1";
+        selectRandomProductOnCategoryPage(MEN_BRACELETS.getCategory());
         putToWishList();
-        verifyHeaderWishListCount("1");
+        verifyHeaderWishListCount(productCount);
     }
 
     @RetryingTest(maxAttempts = 3, minSuccess = 1)
+    @Description("Put product to Wish List and open Wish List page")
     public void navigateToWishListPage() {
-        selectCategoryByTitle("Ремни");
-        selectProductByIndex(2);
+        String productCount ="1";
+        selectRandomProductOnCategoryPage(BELT.getCategory());
         putToWishList();
-        verifyHeaderWishListCount("1");
+        verifyHeaderWishListCount(productCount);
         openWishListPage();
-        verifyWishListProductCount(1);
+        verifyWishListProductCount(Integer.parseInt(productCount));
     }
 
     @Test
-    public void removeSingleItemFromWishList() {
-        selectCategoryByTitle("Ремни");
-        selectProductByIndex(1);
-        putToWishList();
-        verifyHeaderWishListCount("1");
-        openWishListPage();
-        verifyWishListProductCount(1);
-        removeItemFromWishListByIndex(0);
-        verifyWishListIsEmpty();
-    }
-
-    @Test
+    @Description("Increase product amount using up button and then put it into the cart")
     public void increaseProductAmountAndPutIntoCart() {
-        selectCategoryByTitle("Кошельки и портмоне мужские");
-        selectProductByIndex(2);
+        String productCount ="2";
+        int productIndex = 0;
+        selectCategoryByTitle(BELT.getCategory());
+        selectProductByIndex(productIndex);
         increaseProductAmount();
         putProductInCart();
-        verifyHeaderCartCount("2");
+        verifyHeaderCartCount(productCount);
     }
 
     @Test
+    @Description("Set product amount using count field and put it into the cart")
     public void changeProductAmountAndPutIntoCart() {
-        selectCategoryByTitle("Кошельки и портмоне женские");
-        selectProductByIndex(0);
-        changeProductAmountManually("3");
+        String productCount ="2";
+        selectRandomProductOnCategoryPage(WOMEN_PURSES.getCategory());
+        changeProductAmountManually(productCount);
         putProductInCart();
-        verifyHeaderCartCount("3");
+        verifyHeaderCartCount(productCount);
     }
 }

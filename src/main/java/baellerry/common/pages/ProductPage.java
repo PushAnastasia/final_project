@@ -4,13 +4,12 @@ import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
+import static baellerry.common.pages.CartModal.closeCartModal;
 import static com.codeborne.selenide.Selenide.$;
 
-public class ProductPage {
+public class ProductPage extends BasePage {
     static By buyButton = By.id("button-cart");
     static By wishListButton = By.linkText("В закладки");
-    static By alertToast = By.className("alert-block");
-    static By alertToastText = By.className("fm-alert-text");
     static By increaseAmountButton = By.xpath("//*[@id=\"product\"]/div[2]/div[1]/div[1]/div/button[2]");
     static By decreaseAmountButton = By.xpath("//*[@id=\"product\"]/div[2]/div[1]/div[1]/div/button[1]");
     static By amountField = By.id("input-quantity");
@@ -18,7 +17,7 @@ public class ProductPage {
     @Step("Put product into cart using Buy button on Product page")
     public static void putProductInCart() {
         $(buyButton).click();
-        CartModal.closeCartModal();
+        closeCartModal();
     }
 
     @Step("Put product into Wish List using Wish List button on Product page")

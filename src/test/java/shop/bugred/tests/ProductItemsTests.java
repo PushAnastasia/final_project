@@ -108,12 +108,13 @@ public class ProductItemsTests {
     @Description("Search for query that has more than 10 results and verify that returned titles match the query")
     @Test
     public void searchForQueryWithMoreThanTenResults() {
-        String searchQuery = "Платье";
+        String searchQuery = "Шортики";
         LongSearchResponse response = prepareRequest()
                 .when().body(new SearchQuery(searchQuery))
                 .get("search/")
                 .then().spec(responseSpecification())
                 .extract().as(LongSearchResponse.class);
+        System.out.println(response);
         Assertions.assertTrue(response.getResult().stream().allMatch(s -> s.getTitle().contains(searchQuery)));
     }
 

@@ -6,12 +6,10 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import java.util.Random;
-
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class SearchPage {
+public class SearchPage extends BasePage {
     static By innerSearchField = By.id("input-search");
     static By searchResultItems = By.className("fm-module-img");
     static By noResultsMessage = By.cssSelector("#content > div.p-4 > p");
@@ -21,6 +19,13 @@ public class SearchPage {
     static By productTitles = By.cssSelector(".fm-module-title >a");
     static By buyButtons = By.className("fm-product-btn");
     static By heartIcons = By.className("fm-module-buttons-wishlist");
+    static By quickViewIcons = By.className("fm-module-buttons-quickview");
+    static By itemLimitDropdown = By.id("input-limit");
+    static By itemLimitDropdownOptions = By.cssSelector("#input-limit > option");
+    static By listLayoutItem = By.className("product-list");
+    static By gridLayoutItem = By.className("product-grid");
+    static By listViewButton = By.id("list-view");
+    static By gridViewButton = By.id("grid-view");
 
     @Step("Verify that Inner Search field contains required value.")
     public static void verifyInnerSearchValue(String value) {
@@ -66,8 +71,36 @@ public class SearchPage {
         $$(heartIcons).get(randomIndex).click();
     }
 
-    private static int getRandomIndex(int maxIndex) {
-        Random random = new Random();
-        return random.ints(0, maxIndex).findFirst().getAsInt();
+    @Step("Open Quick View modal for random product")
+    public static void openQuickViewModalForRandomProduct() {
+        int randomIndex = getRandomIndex($$(quickViewIcons).size());
+        $$(quickViewIcons).get(randomIndex).hover();
+        $$(quickViewIcons).get(randomIndex).click();
+        $(quickViewModal).shouldBe(Condition.visible);
+    }
+
+    @Step("Change the product items limit per page")
+    public static void setProductLimitPerPage(String limit) {
+        $(itemLimitDropdown).click();
+        SelenideElement option = $$(itemLimitDropdownOptions).stream().filter(s -> s.getText().contains(limit))
+                .findFirst().orElseThrow(RuntimeException::new);
+        option.click();
+    }
+
+    @Step("Verify product items count on page")
+    public static void verifyProductItemsCount(int count) {
+        $$(searchResultItems).shouldHave(CollectionCondition.size(count));
+    }
+
+    @Step("Change view to List and verify the layout")
+    public static void selectListViewAndVerifyLayout() {
+        $(listViewButton).click();
+        $$(listLayoutItem).shouldHave(CollectionCondition.sizeGreaterThan(0));
+    }
+
+    @Step("Change view to Grid and verify the layout")
+    public static void selectGridViewAndVerifyLayout() {
+        $(gridViewButton).click();
+        $$(gridLayoutItem).shouldHave(CollectionCondition.sizeGreaterThan(0));
     }
 }

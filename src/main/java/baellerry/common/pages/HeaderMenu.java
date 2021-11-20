@@ -3,7 +3,6 @@ package baellerry.common.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Step;
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -12,14 +11,12 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 
-public class HeaderMenu {
+public class HeaderMenu extends BasePage {
     static By profileButton = By.id("fm-account-dropdown");
     static By loginModal = By.className("modal-content");
     static By emailField = By.id("emailLoginInput");
     static By passwordField = By.id("passwordLoginInput");
     static By loginButton = By.id("popup-login-button");
-    static By alertToast = By.className("alert-block");
-    static By alertToastText = By.className("fm-alert-text");
     static By profileMenu = By.cssSelector("#fm-account-dropdown > ul");
     static By logOutButton = By.linkText("Выход");
     static By headerCartCount = By.cssSelector("#cart > span.fm-menu-buttons-index.fm-menu-cart-index");

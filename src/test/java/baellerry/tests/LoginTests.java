@@ -1,6 +1,5 @@
 package baellerry.tests;
 
-
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +20,9 @@ public class LoginTests extends BaseTest {
     @Test
     public void logInWithInvalidCredentials() {
         String validationMessage = "Неправильно заполнены поля E-Mail и/или пароль!";
-        logIn("test", "test");
+        String email = "test";
+        String password = "test";
+        logIn(email, password);
         validateAlertToast(validationMessage);
     }
 
