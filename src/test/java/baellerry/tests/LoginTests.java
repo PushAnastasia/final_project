@@ -34,4 +34,6 @@ public class LoginTests extends BaseTest {
         logIn(email, password);
         logOut();
     }
+
+    //comment for git trigger check
 }
