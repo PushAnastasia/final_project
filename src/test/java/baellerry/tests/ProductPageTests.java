@@ -23,11 +23,11 @@ public class ProductPageTests extends BaseTest {
         verifyHeaderCartCount(productCount);
     }
 
-    @Test
+    @RetryingTest(maxAttempts = 3, minSuccess = 1)
     @Description("Put product into cart open side menu cart and increase product count")
     public void increaseProductCountInSideMenuCart() {
         String productCount = "2";
-        selectRandomProductOnCategoryPage(BELT.getCategory());
+        selectRandomProductOnCategoryPage(WOMEN_PURSES.getCategory());
         putProductInCart();
         openSideMenuCart();
         increaseProductCountInSideMenu();
