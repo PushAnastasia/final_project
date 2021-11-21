@@ -64,7 +64,7 @@ public class ProductPageTests extends BaseTest {
         verifyHeaderCartCount(productCount);
     }
 
-    @Test
+    @RetryingTest(maxAttempts = 3, minSuccess = 1)
     @Description("Put product into cart open side menu cart and remove product from the cart")
     public void removeProductFromSideMenuCart() {
         String productCount = "0";
@@ -117,7 +117,7 @@ public class ProductPageTests extends BaseTest {
         verifyHeaderCartCount(productCount);
     }
 
-    @Test
+    @RetryingTest(maxAttempts = 3, minSuccess = 1)
     @Description("Set product amount using count field and put it into the cart")
     public void changeProductAmountAndPutIntoCart() {
         String productCount ="2";

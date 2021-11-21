@@ -14,7 +14,7 @@ public class NavigationSteps extends BasePage {
     @Step("Select some category and then choose random product.")
     public static void selectRandomProductOnCategoryPage(String category) {
         selectCategoryByTitle(category);
-        selectProductByIndex(getRandomIndex($$(By.className("fm-module-img")).size()));
+        selectProductByIndex(getRandomIndex($$(By.className("fm-cat-button-cart")).size()));
     }
 
     @Step("Select product from the category page by index")
