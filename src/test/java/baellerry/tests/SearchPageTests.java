@@ -11,7 +11,7 @@ import static baellerry.common.pages.SearchPage.*;
 public class SearchPageTests extends BaseTest {
 
     @Test
-    @Description("Search for product using valid input and verify that it contains at least one result.")
+    @Description("SP-001 Search for product using valid input and verify that it contains at least one result.")
     public void searchForProductWithValidInput() {
         String validInput = "Сумка";
         searchForProduct(validInput);
@@ -21,7 +21,7 @@ public class SearchPageTests extends BaseTest {
     }
 
     @Test
-    @Description("Required message is displayed for query without corresponding search results")
+    @Description("SP-002 Required message is displayed for query without corresponding search results")
     public void searchForQueryWithoutResults() {
         String invalidInput = "Телевизор";
         searchForProduct(invalidInput );
@@ -30,7 +30,7 @@ public class SearchPageTests extends BaseTest {
     }
 
     @Test
-    @Description("Search results are narrowed down according to selected product category")
+    @Description("SP-003 Search results are narrowed down according to selected product category")
     public void  selectProductCategoryForSearchResults() {
         String searchInput = "Сумка";
         String categoryName = "Сумки мужские";
@@ -41,7 +41,7 @@ public class SearchPageTests extends BaseTest {
     }
 
     @Test
-    @Description("Put random product from search results to cart")
+    @Description("SP-004 Put random product from search results to cart")
     public void putRandomProductFromSearchToCart() {
         String searchInput = "кошелёк";
         String amount = "1";
@@ -52,7 +52,7 @@ public class SearchPageTests extends BaseTest {
     }
 
     @Test
-    @Description("Put random product from search results to wish list")
+    @Description("SP-005 Put random product from search results to wish list")
     public void putRandomProductFromSearchToWishList() {
         String searchInput = "ремень";
         String amount = "1";
@@ -62,7 +62,7 @@ public class SearchPageTests extends BaseTest {
     }
 
     @Test
-    @Description("Open Quick View modal for random product and put into Cart")
+    @Description("SP-006 Open Quick View modal for random product and put into Cart")
     public void openQuickViewModalAndPutToCart() {
         String searchInput = "кошелёк";
         String amount = "1";
@@ -74,7 +74,7 @@ public class SearchPageTests extends BaseTest {
     }
 
     @Test
-    @Description("Open Quick View modal for random product and put into Wish List")
+    @Description("SP-007 Open Quick View modal for random product and put into Wish List")
     public void openQuickViewModalAndPutToWishList() {
         String searchInput = "сумка";
         String amount = "1";
@@ -86,7 +86,7 @@ public class SearchPageTests extends BaseTest {
     }
 
     @Test
-    @Description("Open Quick Order modal from Quick View modal")
+    @Description("SP-008 Open Quick Order modal from Quick View modal")
     public void openQuickOrderModalFromQuickView() {
         String searchInput = "кошелёк";
         searchForProduct(searchInput);
@@ -95,7 +95,7 @@ public class SearchPageTests extends BaseTest {
     }
 
     @Test
-    @Description("Change the product items limit per page and verify items count")
+    @Description("SP-009 Change the product items limit per page and verify items count")
     public void changeProductLimitAndVerifyItemsCount() {
         String searchInput = "сумка";
         int count = 50;
@@ -105,7 +105,7 @@ public class SearchPageTests extends BaseTest {
     }
 
     @Test
-    @Description("Change the view to List and then back to Grid")
+    @Description("SP-010 Change the view to List and then back to Grid")
     public void changeViewToListAndBackToGrid() {
         String searchInput = "ремень";
         searchForProduct(searchInput);

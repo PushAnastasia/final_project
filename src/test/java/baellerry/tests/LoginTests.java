@@ -34,5 +34,4 @@ public class LoginTests extends BaseTest {
         logIn(email, password);
         logOut();
     }
-    
 }

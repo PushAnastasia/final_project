@@ -1,0 +1,175 @@
+Search Page Test Suite
+
+This test suite covers the most common use cases that available for users on Search Page:
+- search for some products;
+- narrow down search results according to product category;
+- put some product from search results into the Cart;
+- put some product from search results into the Wish List;
+- open Quick View for some product;
+- select product item limit per page;
+- change the page layout to List or Grid view.
+
+SP-001
+Summary:
+Search for product using valid input and verify that it contains at least one result
+
+Preconditions:
+The main page of Baellerry online store is open
+Steps:
+1. Enter the valid input into the Search field in header menu
+2. Click search button
+Expected result:
+- inner search field contains entered input value
+- search page contains at least one result
+- all the product titles in search results contain the search key word
+Test data:
+Valid search input - "Сумка"
+
+SP-002
+Summary:
+Required message is displayed for query without corresponding search results
+
+Preconditions:
+The main page of Baellerry online store is open
+Steps:
+1. Enter the input that won't return any results into the Search field in header menu
+2. Click search button
+Expected result:
+- inner search field contains entered input value
+- search page contains no results
+- search page contains text message that no results found
+Test data:
+Search input - "Телевизор"
+Message - "Нет товаров, которые соответствуют критериям поиска."
+
+SP-003
+Summary:
+Search results are narrowed down according to selected product category
+
+Preconditions:
+The main page of Baellerry online store is open
+Steps:
+1. Enter the valid input into the Search field in header menu
+2. Click search button
+3. In Product category dropdown select the category that will narrow down search results
+Expected result:
+All the product titles in search results contain the key word from selected category
+Test data:
+Search input - "Сумка"
+Category name - "Сумки мужские"
+Key word - "мужская"
+
+SP-004
+Summary:
+Put random product from search results to cart
+
+Preconditions:
+The main page of Baellerry online store is open
+Steps:
+1. Enter the valid input into the Search field in header menu
+2. Click search button
+3. Put any product from search results to Cart using Buy button
+4. Close Cart modal
+Expected result:
+Cart Count in header contains value "1"
+Test data:
+Search input - "кошелёк"
+
+SP-005
+Summary:
+Put random product from search results to wish list
+
+Preconditions:
+The main page of Baellerry online store is open
+Steps:
+1. Enter the valid input into the Search field in header menu
+2. Click search button
+3. Put any product from search results to Wish List using "Heart" icon
+Expected result:
+Wish List Count in header contains value "1"
+Test data:
+Search input - "ремень"
+
+SP-006
+Summary:
+Open Quick View modal for random product and put into Cart
+
+Preconditions:
+The main page of Baellerry online store is open
+Steps:
+1. Enter the valid input into the Search field in header menu
+2. Click search button
+3. Open Quick View modal for any product using Quick View button
+4. Click on Buy button
+5. Close Quick View modal
+Expected result:
+Cart Count in header contains value "1"
+Test data:
+Search input - "кошелёк"
+
+SP-007
+Summary:
+Open Quick View modal for random product and put into Wish List
+
+Preconditions:
+The main page of Baellerry online store is open
+Steps:
+1. Enter the valid input into the Search field in header menu
+2. Click search button
+3. Open Quick View modal for any product using Quick View button
+4. Click on Wish List button
+5. Close Quick View modal
+Expected result:
+Wish List Count in header contains value "1"
+Test data:
+Search input - "сумка"
+
+SP-008
+Summary:
+Open Quick Order modal from Quick View modal
+
+Preconditions:
+The main page of Baellerry online store is open
+Steps:
+1. Enter the valid input into the Search field in header menu
+2. Click search button
+3. Open Quick View modal for any product using Quick View button
+4. Click Quick Order button
+Expected result:
+Quick Order modal is displayed
+Test data:
+Search input - "кошелёк"
+
+SP-009
+Summary:
+Change the product items limit per page and verify items count
+
+Preconditions:
+The main page of Baellerry online store is open
+Steps:
+1. Enter into the Search field in header menu input that will have more results that Item Limit per page
+2. Click search button
+3. Open Product Count Per Page dropdown and select Item limit
+Expected result:
+Search page contains product items amount according to selected limit
+Test data:
+Search input - "сумка"
+Item limit - 50
+
+SP-010
+Summary:
+Change the view to List and then back to Grid
+
+Preconditions:
+The main page of Baellerry online store is open
+Steps:
+1. Enter into the Search field in header menu input that will have more results that Item Limit per page
+2. Click search button
+3. Click List View button
+Expected result:
+Layout is changed to List View
+4. Click Grid View button
+Expected result:
+Layout is changed to Grid View
+Test data:
+Search input - "ремень"
