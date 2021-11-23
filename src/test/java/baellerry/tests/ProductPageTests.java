@@ -50,7 +50,7 @@ public class ProductPageTests extends BaseTest {
         verifyHeaderCartCount(productCount);
     }
 
-    @Test
+    @RetryingTest(maxAttempts = 3, minSuccess = 1)
     @Description("Put product into cart open side menu cart and change product count using amount field")
     public void changeProductCountManuallyInSideMenuCart() {
         String productCount = "3";
