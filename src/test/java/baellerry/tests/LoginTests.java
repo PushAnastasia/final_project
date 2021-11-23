@@ -7,8 +7,8 @@ import static baellerry.common.pages.HeaderMenu.*;
 
 public class LoginTests extends BaseTest {
 
-    @Description("User should be able to login with valid credentials. Profile menu should be available for logged in user")
     @Test
+    @Description("User should be able to login with valid credentials. Profile menu should be available for logged in user")
     public void logInWithValidCredentials() {
         String email = "depayev278@forfity.com";
         String password = "plokijuh1";
@@ -16,8 +16,8 @@ public class LoginTests extends BaseTest {
         validateProfileMenu();
     }
 
-    @Description("Validation message should be displayed after attempt to log in with invalid credentials")
     @Test
+    @Description("Validation message should be displayed after attempt to log in with invalid credentials")
     public void logInWithInvalidCredentials() {
         String validationMessage = "Неправильно заполнены поля E-Mail и/или пароль!";
         String email = "test";
@@ -26,8 +26,8 @@ public class LoginTests extends BaseTest {
         validateAlertToast(validationMessage);
     }
 
-    @Description("Logged in User should be able to log out.")
     @Test
+    @Description("Logged in User should be able to log out.")
     public void validateLogOut() {
         String email = "depayev278@forfity.com";
         String password = "plokijuh1";

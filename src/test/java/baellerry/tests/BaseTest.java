@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 @ExtendWith(LoggingPostProcessExtension.class)
 public class BaseTest {
+
     private Logger logger;
 
     public void setLogger(Logger logger) {

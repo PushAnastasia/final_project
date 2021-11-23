@@ -3,6 +3,7 @@ package shop.bugred.utils.models;
 import java.util.Objects;
 
 public class SingleProductItemResponse {
+
     private String method;
     private String status;
     private ProductItem result;

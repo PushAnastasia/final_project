@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CartModal {
+
     static By cartModal = By.id("fm-cart-modal");
     static By closeCartButton = By.cssSelector("#fm-popup-cart > div > div > div.modal-header > button");
 

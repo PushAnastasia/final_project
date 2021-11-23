@@ -47,6 +47,4 @@ public class BasePage {
         $(quickOrderButton).click();
         $(quickOrderModal).shouldBe(Condition.visible);
     }
-
-
 }

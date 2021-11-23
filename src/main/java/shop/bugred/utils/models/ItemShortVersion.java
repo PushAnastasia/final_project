@@ -1,6 +1,7 @@
 package shop.bugred.utils.models;
 
 public class ItemShortVersion {
+
     private int last_id;
     private String title;
 

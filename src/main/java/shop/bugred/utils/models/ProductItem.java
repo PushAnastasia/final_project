@@ -3,6 +3,7 @@ package shop.bugred.utils.models;
 import java.util.Objects;
 
 public class ProductItem {
+
     private int id;
     private String name;
     private String section;

@@ -16,7 +16,7 @@ public class ProductItemsTests {
     @RetryingTest(maxAttempts = 3, minSuccess = 1)
     @Description("Perform get item request using random id and verify that required fields not empty")
     public void getRandomItemByIdAndVerifyRequiredFieldsNotEmpty() {
-        IdRequest request =  new IdRequest(getRandomId());
+        IdRequest request = new IdRequest(getRandomId());
         prepareRequest().when().body(request).get("get/")
                 .then().spec(responseSpecification())
                 .body("result.name", not(hasValue(nullValue())))
@@ -28,7 +28,7 @@ public class ProductItemsTests {
     @Test
     public void getItemByNotExistingId() {
         int notExistingId = 4440;
-        IdRequest request =  new IdRequest(notExistingId);
+        IdRequest request = new IdRequest(notExistingId);
         prepareRequest().when().body(request).get("get/")
                 .then().body("status", equalTo("error"))
                 .body("error", equalTo("item_with_id_not_found"));
@@ -86,7 +86,7 @@ public class ProductItemsTests {
         String description = "Моднaя блуза из новой коллекции!";
         String successMessage = "успешно удален";
         ProductItem item = createProductItemsWithMinFields(name, section, description);
-        IdRequest request =  new IdRequest(item.getId());
+        IdRequest request = new IdRequest(item.getId());
         prepareRequest().when().body(request).delete("delete/")
                 .then().spec(responseSpecification())
                 .body("result", containsString(successMessage));

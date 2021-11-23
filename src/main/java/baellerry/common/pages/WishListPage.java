@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class WishListPage {
+
     static By productItem = By.className("fm-acc-info-block");
     static By deleteItemButton = By.className("fm-acc-info-link-del");
     static By emptyWishListMessage = By.cssSelector("#content > div > div > p");

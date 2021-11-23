@@ -1,7 +1,6 @@
 package baellerry.common.pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -37,13 +36,13 @@ public class HeaderMenu extends BasePage {
 
     @Step("Enter credentials into login modal and submit.")
     public static void logIn(String email, String password) {
-        Configuration.timeout = 10000;
         $(profileButton).click();
         $(loginModal).should(Condition.visible);
         $(emailField).sendKeys(email);
         $(passwordField).sendKeys(password);
         $(loginButton).click();
     }
+
     @Step("Validate that toast message contains required message.")
     public static void validateAlertToast(String message) {
         $(alertToast).should(Condition.appear);
@@ -52,18 +51,20 @@ public class HeaderMenu extends BasePage {
 
     @Step("Validate that profile menu is available and contains required items.")
     public static void validateProfileMenu() {
+        int menuItemsCount = 5;
         $(profileButton).should(Condition.visible);
         $(profileButton).click();
         $(profileMenu).should(Condition.visible);
-        $$(By.className("dropdown-item")).shouldHave(size(5));
+        $$(By.className("dropdown-item")).shouldHave(size(menuItemsCount));
     }
 
     @Step("Open profile menu, click logout button and verify that on Logout page.")
     public static void logOut() {
+        String pageTitle = "Выход";
         $(profileButton).click();
         $(profileMenu).should(Condition.visible);
         $(logOutButton).click();
-        $("title").shouldHave(attribute("text", "Выход"));
+        $("title").shouldHave(attribute("text", pageTitle));
     }
 
     @Step("Verify that cart count in header menu equals required value.")
@@ -120,8 +121,9 @@ public class HeaderMenu extends BasePage {
 
     @Step("Click Create order button in side menu cart")
     public static void goToCreateOrderFromSideMenuCart() {
+        String pageTitle = "Оформление заказа";
         $(sideMenuCreateOrderButton).click();
-        $("title").shouldHave(attribute("text", "Оформление заказа"));
+        $("title").shouldHave(attribute("text", pageTitle));
     }
 
     @Step("Verify that wish list count in header menu equals required value.")
@@ -136,8 +138,9 @@ public class HeaderMenu extends BasePage {
 
     @Step("Go to Main page via Logo button.")
     public static void goToMainPageViaLogo() {
+        String pageTitle = "Кожаные аксессуары Baellerry - официальный магазин в Украине";
         $(logoButton).click();
-        $("title").shouldHave(attribute("text", "Кожаные аксессуары Baellerry - официальный магазин в Украине"));
+        $("title").shouldHave(attribute("text", pageTitle));
     }
 
     @Step("Search for some product")

@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class SearchPage extends BasePage {
+
     static By innerSearchField = By.id("input-search");
     static By searchResultItems = By.className("fm-module-img");
     static By noResultsMessage = By.cssSelector("#content > div.p-4 > p");

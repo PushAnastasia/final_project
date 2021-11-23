@@ -88,7 +88,7 @@ public class ProductPageTests extends BaseTest {
     @Test()
     @Description("Put product to Wish List and verify Wish List count in header")
     public void putProductToWishList() {
-        String productCount ="1";
+        String productCount = "1";
         selectRandomProductOnCategoryPage(MEN_BRACELETS.getCategory());
         putToWishList();
         verifyHeaderWishListCount(productCount);
@@ -97,7 +97,7 @@ public class ProductPageTests extends BaseTest {
     @RetryingTest(maxAttempts = 3, minSuccess = 1)
     @Description("Put product to Wish List and open Wish List page")
     public void navigateToWishListPage() {
-        String productCount ="1";
+        String productCount = "1";
         selectRandomProductOnCategoryPage(BELT.getCategory());
         putToWishList();
         verifyHeaderWishListCount(productCount);
@@ -108,7 +108,7 @@ public class ProductPageTests extends BaseTest {
     @Test
     @Description("Increase product amount using up button and then put it into the cart")
     public void increaseProductAmountAndPutIntoCart() {
-        String productCount ="2";
+        String productCount = "2";
         int productIndex = 0;
         selectCategoryByTitle(BELT.getCategory());
         selectProductByIndex(productIndex);
@@ -120,7 +120,7 @@ public class ProductPageTests extends BaseTest {
     @RetryingTest(maxAttempts = 3, minSuccess = 1)
     @Description("Set product amount using count field and put it into the cart")
     public void changeProductAmountAndPutIntoCart() {
-        String productCount ="2";
+        String productCount = "2";
         selectRandomProductOnCategoryPage(WOMEN_PURSES.getCategory());
         changeProductAmountManually(productCount);
         putProductInCart();

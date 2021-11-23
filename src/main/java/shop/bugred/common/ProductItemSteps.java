@@ -24,14 +24,14 @@ public class ProductItemSteps {
     }
 
     public static SingleProductItemResponse getProductItemResponseById(int id) {
-        IdRequest requestBody =  new IdRequest(id);
+        IdRequest requestBody = new IdRequest(id);
         return prepareRequest().when().body(requestBody).get("get/")
                 .then().spec(responseSpecification())
                 .extract().as(SingleProductItemResponse.class);
     }
 
     public static void verifyThatProductNotFound(int id) {
-        IdRequest requestBody =  new IdRequest(id);
+        IdRequest requestBody = new IdRequest(id);
         prepareRequest().when().body(requestBody).get("get/")
                 .then().body("status", equalTo("error"))
                 .body("message", containsString("не найден!"));
@@ -39,6 +39,7 @@ public class ProductItemSteps {
 
     public static int getRandomId() {
         Random random = new Random();
-        return random.ints(1, 80).findFirst().getAsInt();
+        int maxProductItemAmount = 80;
+        return random.ints(1, maxProductItemAmount).findFirst().getAsInt();
     }
 }

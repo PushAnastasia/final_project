@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class ShortSearchResponse {
+    
     private String method;
     private String status;
     private List<ProductItem> result;

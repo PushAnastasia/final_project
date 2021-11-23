@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class MainPage {
+
     static By categoryItems = By.className(".fm-category-wall-item");
 
     @Step("Select the product category by title")

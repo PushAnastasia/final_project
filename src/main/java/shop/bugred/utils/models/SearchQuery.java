@@ -1,6 +1,7 @@
 package shop.bugred.utils.models;
 
 public class SearchQuery {
+
     String query;
 
     public SearchQuery() {

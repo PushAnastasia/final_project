@@ -12,6 +12,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class Specification {
+
     static String baseUri = "http://shop.bugred.ru";
     static String basePath = "/api/items/";
 

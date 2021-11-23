@@ -3,6 +3,7 @@ package shop.bugred.utils.models;
 import java.util.List;
 
 public class LongSearchResponse {
+
     private String method;
     private String status;
     private List<ItemShortVersion> result;

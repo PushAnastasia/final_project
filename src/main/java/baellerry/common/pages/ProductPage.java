@@ -8,6 +8,7 @@ import static baellerry.common.pages.CartModal.closeCartModal;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ProductPage extends BasePage {
+
     static By buyButton = By.id("button-cart");
     static By wishListButton = By.linkText("В закладки");
     static By increaseAmountButton = By.xpath("//*[@id=\"product\"]/div[2]/div[1]/div[1]/div/button[2]");

@@ -1,6 +1,7 @@
 package shop.bugred.utils.models;
 
 public class IdRequest {
+
     private int id;
 
     public int getId() {
